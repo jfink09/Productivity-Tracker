@@ -87,6 +87,10 @@ input {
   width: 25px;
 }
 
+.grid-container > div:hover {
+  cursor: pointer;
+}
+
 .colorpicker {
   height: 40px;
   width: 50px;
@@ -117,11 +121,11 @@ label {
 
 <body>
 
-    <h1><b>One Day At A Time</b></h1>
+    <h1><b>Some Shit Goes Here</b></h1>
 
-    <input type="text">
+    <input id="input" type="text" onblur="myFunction()">
 
-    <div class="input-explaination">
+    <div class="input-explaination" id="input-explaination">
       <p>
         Type in each task you completed toward your productivity goals. They will
         be automatically added to today's circle and a the color will fill based on
@@ -133,7 +137,7 @@ label {
     <div class="arrow-head"></div>
 
     <div class="grid-container">
-        <div></div><div></div><div></div><div></div>
+        <div onclick="returnText()"></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
@@ -246,6 +250,11 @@ label {
                     $(".grid-container > div").css("background-color",color);
                 });
             });
+
+          function returnText(){
+            let input = document.getElementById("input").value;
+            alert(input)
+          }
       </script>
 
 </body>
