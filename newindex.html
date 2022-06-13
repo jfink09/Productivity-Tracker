@@ -153,6 +153,8 @@ label {
   margin: auto;
   padding: 0;
   width: 80%;
+  overflow: auto;
+  margin-bottom: 20vh;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.5s;
   animation-name: animatetop;
@@ -212,7 +214,8 @@ label {
     <h1><b>Some Shit Goes Here</b></h1>
 
     <input id="input" type="text">
-    <button onclick="document.querySelector('#modal-body').innerHTML = document.querySelector('#input').value">Add Task</button>
+    <button id="button" onclick='fillData()'>Add Task</button>
+    <!--This line only works if you want to only have one input and be able to update it: onclick="document.querySelector('#modal-body').innerHTML = document.querySelector('#input').value"-->
 
     <div class="input-explaination" id="input-explaination">
       <p>
@@ -372,6 +375,12 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+let fillData = () => {
+        let ele = document.getElementById('modal-body');
+        let text = document.getElementById('input').value;
+        ele.innerHTML += text + '<br><br>';
+    }
 
 </script>
 
