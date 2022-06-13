@@ -12,7 +12,7 @@
 <head>
     <style>
 
-* {
+body {
     background-color: #0f2f3b;
 }
 
@@ -35,25 +35,42 @@ input {
   color: #e9f9ff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
+  background-color: #0f2f3b;
+}
+
+button {
+  margin: 0 0 0 2vw;
+  background-color: #e9f9ff;
+  border: 1px solid #e9f9ff;
+  border-radius: 0.25em;
+  color: #000;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #0f2f3b;
+  color: #e9f9ff;
 }
 
 .arrow-body {
   position: relative;
   float: right;
-  margin: 13vh 7% 0 0;
+  margin: 13vh 8% 0 0;
   height: 15px;
-  width: 10%;
+  width: 5%;
   background-color: #e9f9ff;
 }
 
 .arrow-head {
   position: relative;
   float: right;
-  margin: -3.65% 17% 0 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid #e9f9ff;
-  border-bottom: 30px solid transparent;
-  border-top: 30px solid transparent;
+  margin: -3% 13% 0 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid #e9f9ff;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
 }
 
 .input-explaination {
@@ -116,6 +133,77 @@ label {
   color: #e9f9ff;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #e9f9ff;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animatetop;
+  animation-duration: 0.5s
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.close {
+  color: #FF0000;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #b93939;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #e9f9ff;
+  color: #000;
+  border-bottom: 3px solid #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-body {
+	padding: 10px 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #e9f9ff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
     </style>
 </head>
 
@@ -123,7 +211,8 @@ label {
 
     <h1><b>Some Shit Goes Here</b></h1>
 
-    <input id="input" type="text" onblur="myFunction()">
+    <input id="input" type="text">
+    <button onclick="document.querySelector('#modal-body').innerHTML = document.querySelector('#input').value">Add Task</button>
 
     <div class="input-explaination" id="input-explaination">
       <p>
@@ -137,7 +226,7 @@ label {
     <div class="arrow-head"></div>
 
     <div class="grid-container">
-        <div onclick="returnText()"></div><div></div><div></div><div></div>
+        <div id="1"></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div>
@@ -243,19 +332,48 @@ label {
       <label>Choose Your Color:</label>
       <input type="color" id="colorpicker" class="colorpicker" value="#FFFFFF">
 
-      <script>
-         $(document).ready(function(){
-                $("#colorpicker").change(function(){
-                    var color = $(this).val();
-                    $(".grid-container > div").css("background-color",color);
-                });
-            });
 
-          function returnText(){
-            let input = document.getElementById("input").value;
-            alert(input)
-          }
-      </script>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Today's Date Accomplishments</h2>
+          </div>
+          <div class="modal-body" id="modal-body"></div>
+          <div class="modal-footer">
+            <h3>Your Tasks</h3>
+          </div>
+        </div>
+      </div>
+
+<script>
+         
+$(document).ready(function(){
+      $("#colorpicker").change(function(){
+          var color = $(this).val();
+          $(".grid-container > div").css("background-color",color);
+      });
+  });
+
+var modal = document.getElementById("myModal");
+var day = document.getElementById("1");
+var span = document.getElementsByClassName("close")[0];
+
+day.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
 
 </body>
 </html>
