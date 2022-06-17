@@ -24,7 +24,7 @@ h1 {
     color: #e9f9ff;
 }
 
-input {
+#input {
   width: 40%;
   height: 6vh;
   margin: 10vh 0 0 5vw;
@@ -38,10 +38,33 @@ input {
   background-color: #0f2f3b;
 }
 
+#daily-input {
+  width: 50%;
+  height: 3vh;
+  margin: 0 0 0 2vw;
+  outline: none;
+  border: 2px solid #0f2f3b;
+  border-radius: 1em 2em 3em 1em;
+  padding-left: 10px;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: #e9f9ff;
+}
+
+::placeholder {
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
 button {
   margin: 0 0 0 2vw;
   background-color: #e9f9ff;
-  border: 1px solid #e9f9ff;
+  border: 2px solid #0f2f3b;
   border-radius: 0.25em;
   color: #000;
   font-weight: bold;
@@ -109,7 +132,7 @@ button:hover {
 }
 
 .colorpicker {
-  height: 40px;
+  height: 50px;
   width: 50px;
   background-color: transparent;
   border: none;
@@ -131,6 +154,14 @@ label {
   font-size: 24px;
   margin: 0 0 0 5vw;
   color: #e9f9ff;
+}
+
+#modal-footer-label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  color: #000;
 }
 
 .modal {
@@ -194,7 +225,7 @@ label {
 }
 
 .modal-body {
-	padding: 10px 16px;
+	padding: 10px 16px 0 14px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
@@ -206,15 +237,20 @@ label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.remove {
+  color: #FF0000;
+  font-size: 20px;
+}
+
     </style>
 </head>
 
 <body>
 
-    <h1><b>Some Shit Goes Here</b></h1>
+    <h1><b>Some Title Goes Here</b></h1>
 
     <input id="input" type="text">
-    <button id="button" onclick='fillData()'>Add Task</button>
+    <button id="button" onclick="fillData()">Add Task</button>
     <!--This line only works if you want to only have one input and be able to update it: onclick="document.querySelector('#modal-body').innerHTML = document.querySelector('#input').value"-->
 
     <div class="input-explaination" id="input-explaination">
@@ -228,109 +264,7 @@ label {
     <div class="arrow-body"></div>
     <div class="arrow-head"></div>
 
-    <div class="grid-container">
-        <div id="1"></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-    
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
-
-        <div></div><div></div><div></div><div></div><div></div>
-
-      </div>
+    <div id="grid-container" class="grid-container"></div>
 
       <label>Choose Your Color:</label>
       <input type="color" id="colorpicker" class="colorpicker" value="#FFFFFF">
@@ -340,14 +274,17 @@ label {
         <div class="modal-content">
           <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>Today's Date Accomplishments</h2>
+            <h2 id="inner-header"></h2>
           </div>
           <div class="modal-body" id="modal-body"></div>
           <div class="modal-footer">
-            <h3>Your Tasks</h3>
+            <label id="modal-footer-label">Your Tasks:</label>
+            <input id="daily-input" type="text" placeholder="Add Task...">
+            <button id="button" onclick="fillData()">Add Task</button>
           </div>
         </div>
       </div>
+
 
 <script>
          
@@ -358,13 +295,41 @@ $(document).ready(function(){
       });
   });
 
-var modal = document.getElementById("myModal");
-var day = document.getElementById("1");
-var span = document.getElementsByClassName("close")[0];
+document.body.onload = addDays;
 
-day.onclick = function() {
-  modal.style.display = "block";
+function addDays () {
+
+var container = document.getElementById("grid-container");
+
+var html = "";
+
+for(var i = 1; i <= 365; i++) {
+    html += "<div id='"+ i +"' onclick=\"showModal("+i+")\"></div>"
 }
+
+container.innerHTML = html;
+
+}
+
+var modal = document.getElementById("myModal");
+
+function showModal(i) {
+
+var date = new Date(2022, 0, i);
+
+date = ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear()
+
+//var day = document.getElementById(toString(i));
+var header = document.getElementById("inner-header");
+var footer = document.getElementById("modal-footer");
+
+header.innerHTML = "" + date + " Accomplishments";
+
+modal.style.display = "block";
+
+}
+
+var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -377,10 +342,16 @@ window.onclick = function(event) {
 }
 
 let fillData = () => {
-        let ele = document.getElementById('modal-body');
-        let text = document.getElementById('input').value;
-        ele.innerHTML += text + '<br><br>';
+        var ele = document.getElementById('modal-body');
+        var text = document.getElementById('daily-input').value;
+        var whole = ele.innerHTML += text + '<button class="remove" onclick="remove()">&times;</button>' + '<br><br>';
     }
+
+
+const d = new Date();
+d.setFullYear(2022, 0, 1);
+//document.getElementById("1") = d;
+
 
 </script>
 
